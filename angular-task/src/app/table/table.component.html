@@ -1,0 +1,162 @@
+<h3 >Table</h3>
+<button type="button" class="btn btn-primary m-3"  data-bs-toggle="modal" data-bs-target="#addmember">
+    Add Member
+  </button>
+
+<table width="100%" class="table">
+
+    <tr>
+
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Delete</th>
+        <th>Edit</th>
+
+    </tr>
+
+    <tr *ngFor="
+    let item of employees; 
+    let i = index;">
+
+        <td>{{i+1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.city}}</td>
+        <td>{{item.country}}</td>
+        <td><button type="button" class="btn btn-danger bg-danger text-light" (click)="hidden(i)">Delete</button></td>
+        <td><button type="button" class="btn btn-warning bg-warning" (click)="updateitem(i,item)" data-bs-toggle="modal" 
+            data-bs-target="#editmember">Edit</button></td>
+    </tr>
+
+</table>
+
+
+
+  
+  <!-- Modal add member -->
+  <div class="modal fade" id="addmember" data-bs-backdrop="static" tabindex="-1" aria-hidden="true"
+        style="backdrop-filter: blur(5px);">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-bg-dark">
+                    <div class="modal-title">Add Employee Details</div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="addmemberform" >
+                        <div class="container">
+                            <div class="row">
+                                
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control from-control-sm" placeholder="Name"
+                                            formControlName="name" >
+                                        <span *ngIf="addmemberform.controls['name'] && addmemberform.controls['name'].invalid && addmemberform.controls['name'].touched">Enter Valid Input</span>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control from-control-sm" placeholder="Email Id"
+                                        formControlName="email">
+                                        <span *ngIf="addmemberform.controls['email'] && addmemberform.controls['email'].invalid && addmemberform.controls['email'].touched">Enter Valid Input</span>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="number" class="form-control from-control-sm"  placeholder="Age"
+                                        formControlName="age">
+                                        <span *ngIf="addmemberform.controls['age'] && addmemberform.controls['age'].invalid && addmemberform.controls['age'].touched">Enter Valid Input</span>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control from-control-sm" placeholder="City"
+                                        formControlName="city">
+                                        <span *ngIf="addmemberform.controls['city'] && addmemberform.controls['city'].invalid && addmemberform.controls['city'].touched">Enter Valid Input</span>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <input type="text" class="form-control from-control-sm" placeholder="Country"
+                                        formControlName="country">
+                                        <span *ngIf="addmemberform.controls['country'] && addmemberform.controls['country'].invalid && addmemberform.controls['country'].touched">Enter Valid Input</span>
+                                </div>
+                                
+                                <div class="col-md-10">
+                                    <div class="d-grid">
+                                        <button type="submit"  [disabled]="addmemberform.invalid" (click)="additem()" class="btn btn-warning">Add Employee</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                        aria-dismiss="close">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal add member ends -->
+
+
+
+    <!-- Modal edit member -->
+  <div class="modal fade" id="editmember" data-bs-backdrop="static" tabindex="-1" aria-hidden="true"
+  style="backdrop-filter: blur(5px);">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header text-bg-dark">
+              <div class="modal-title">Edit Employee Details</div>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                  aria-label="close"></button>
+          </div>
+          <div class="modal-body">
+              <form [formGroup]="addmemberform" >
+                  <div class="container">
+                      <div class="row">
+                          
+                          <div class="col-md-6">
+                              <div class="mb-3">
+                                  <input type="text" class="form-control from-control-sm" placeholder="Name"
+                                      formControlName="name" >
+                              </div>
+                          </div>    
+                          <div class="col-md-6 mb-3">
+                              <input type="email" class="form-control from-control-sm" placeholder="Email Id"
+                                  formControlName="email">
+                          </div>
+                          <div class="col-md-6 mb-3">
+                              <input type="number" class="form-control from-control-sm"  placeholder="Age"
+                                  formControlName="age">
+                          </div>
+                          <div class="col-md-6 mb-3">
+                              <input type="text" class="form-control from-control-sm" placeholder="City"
+                                  formControlName="city">
+                          </div>
+                          <div class="col-md-12 mb-3">
+                              <input type="text" class="form-control from-control-sm" placeholder="Country"
+                                  formControlName="country">
+                          </div>
+                          
+                          <div class="col-md-10">
+                              <div class="d-grid">
+                                  <button type="submit"  class="btn btn-warning" (click)="updateitemdata(addmemberform.value)">Update</button>
+                              </div>
+                          </div>
+                          <div class="col-md-2">
+                              <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                  aria-dismiss="close">Close</button>
+                          </div>
+
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- modal edit member ends -->

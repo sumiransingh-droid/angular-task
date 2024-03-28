@@ -1,0 +1,42 @@
+
+<div class="row login mt-5">
+    <div class="col-md-6 mt-5">
+        
+        <form [formGroup]="loginform" (ngSubmit)="login()" >
+            <div class="container">
+                <div class="row">
+            <h3 class="text-center pb-5">login </h3>
+            
+            
+            
+            
+            <div class="col-md-12 mb-3">
+                <input type="email" class="form-control from-control-sm" placeholder="Email Id"
+                    formControlName="email">
+                    <span *ngIf="loginform.controls['email'] && loginform.controls['email'].invalid && loginform.controls['email'].touched">Enter Valid Input</span>
+            </div>
+            
+            <div class="col-md-12 mb-3">
+                <input type="password" class="form-control from-control-sm" placeholder="Password"
+                    formControlName="password">
+                    <span *ngIf="loginform.controls['password'] && loginform.controls['password'].invalid && loginform.controls['password'].touched">Enter Valid Input</span>
+            </div>
+            
+            
+            <div class="col-md-4">
+                <div class="d-grid">
+                    <button type="submit" (click)="onlogin()"  [disabled]="loginform.invalid"  class="btn btn-success">Login</button>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="reset" class="btn btn-warning" >Reset</button>
+            </div>
+
+        </div>
+    </div>
+</form>
+    </div>
+    <div class="col-md-6">
+        <img src="assets\images\login.avif">
+    </div>
+    </div>

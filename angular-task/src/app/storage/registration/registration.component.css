@@ -1,0 +1,28 @@
+span{
+    color: red;
+    font-size: 70%;
+    font-weight: 500;
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+.container{
+    border: 1px black solid;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px 5px grey ;
+    height: 380px;
+    padding: 70px;
+}
+h3{
+    padding-left:13px ;
+}
+img{
+    height:550px;
+
+}
+.register{
+    margin: auto;
+    width: 1200px;
+
+}

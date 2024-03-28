@@ -1,0 +1,54 @@
+
+
+<div class="row register">
+    <div class="col-md-6">
+        <img src="assets\images\register.avif">
+    </div>
+    
+    
+    <div class="col-md-6 mt-5">
+        <h3 class="text-center pb-3">Registration </h3>
+        <form [formGroup]="addmemberform"  >
+            <div class="container">
+                <div class="row">
+            
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <input type="text" class="form-control from-control-sm" placeholder="Name"
+                        formControlName="name" >
+                    <span *ngIf="addmemberform.controls['name'] && addmemberform.controls['name'].invalid && addmemberform.controls['name'].touched">Enter Valid Input</span>
+                </div>
+            </div>
+            
+            
+            <div class="col-md-12 mb-3">
+                <input type="email" class="form-control from-control-sm" placeholder="Email Id"
+                    formControlName="email">
+                    <span *ngIf="addmemberform.controls['email'] && addmemberform.controls['email'].invalid && addmemberform.controls['email'].touched">Enter Valid Input</span>
+            </div>
+            <div class="col-md-12 mb-3">
+                <input type="number" class="form-control from-control-sm"  placeholder="Age"
+                    formControlName="age">
+                    <span *ngIf="addmemberform.controls['age'] && addmemberform.controls['age'].invalid && addmemberform.controls['age'].touched">Enter Valid Input</span>
+            </div>
+            <div class="col-md-12 mb-3">
+                <input type="password" class="form-control from-control-sm" placeholder="Password"
+                    formControlName="password">
+                    <span *ngIf="addmemberform.controls['password'] && addmemberform.controls['password'].invalid && addmemberform.controls['password'].touched">Enter Valid Input</span>
+            </div>
+            
+            
+            <div class="col-md-4">
+                <div class="d-grid">
+                    <button type="submit"  [disabled]="addmemberform.invalid" (click)="onregister()" class="btn btn-success">Register</button>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <button type="reset" class="btn btn-warning" >Reset</button>
+            </div>
+            
+        </div>
+    </div>
+</form>
+</div>
+</div>

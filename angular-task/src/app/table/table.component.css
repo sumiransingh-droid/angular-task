@@ -1,0 +1,15 @@
+.table{
+    text-align: center;
+    padding: 1px;
+}
+th,td{
+    border:1px solid aqua;
+}
+span{
+    color: red;
+    font-size: 70%;
+    font-weight: 500;
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
